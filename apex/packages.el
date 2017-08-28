@@ -116,7 +116,7 @@ Each entry is either:
    "trigger" "on" "before" "after"
    "return"
    "testmethod" "future" "callout"
-   "select" "from" "using" "where" "not" "or" "null" "void" "true" "false" "like" "as" "in"
+   "select" "from" "using" "where" "not" "or" "null" "void" "true" "false" "like" "as" "in" "limit"
    )
        'words)
      (1 font-lock-keyword-face))
