@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: CodeCommentHeader
+# key: CCH
+# --
+/**
+ * ${1:`(file-name-base buffer-file-name)`}
+ *
+ * Description       :   
+ * Project           :   
+ * Version           :   
+ * Date              :   `(format-time-string "%d %B %Y")`$0
+ * Author (original) :   Enrico Benini (enricobenini@)
+ **/
