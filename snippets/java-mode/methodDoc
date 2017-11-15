@@ -2,11 +2,10 @@
 # name: methodDoc
 # key: mthdoc
 # --
-    ///
-    /// $3
-    /// @param $4
-    /// @return $2 - 
-    ///
+///
+/// $3
+${4:$(mapconcat (lambda (x) (concat "/// @param " x ": \n")) (split-string yas/text ", ") "")}/// @return $2:
+///
 ${1:private} ${2:void} ${3:name}(${4:args}) {
     $0
 }

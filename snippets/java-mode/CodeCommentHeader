@@ -5,9 +5,9 @@
 /**
  * ${1:`(file-name-base buffer-file-name)`}
  *
- * @description       :   
- * @project           :   
- * @version           :   
- * @date              :   `(format-time-string "%d %B %Y")`$0
- * @author (original) :   Enrico Benini (enricobenini@)
- **/
+ * @description       :   $1
+ * @project           :   $2
+ * @version           :   $3
+ * @date              :   `(format-time-string "%d %B %Y")`
+ * @author (original) :   Enrico Benini (enricobenini@$4)
+ **/$0
