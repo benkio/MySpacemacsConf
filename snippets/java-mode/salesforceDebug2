@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: salesforceDebug 2
+# key: sf2
+# --
+system.debug('$1');$0
