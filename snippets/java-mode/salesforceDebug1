@@ -2,4 +2,4 @@
 # name: salesforceDebug 1
 # key: sf1
 # --
-system.debug('$1: ', $1);$0
+system.debug('$1: ' + $1);$0
