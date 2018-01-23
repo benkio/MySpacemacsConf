@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Salesforce Assert
+# key: sa
+# --
+System.assert($1);$0

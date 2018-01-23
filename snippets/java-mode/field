@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: class field
+# key: field
+# --
+${1:public} ${2: String} ${3};
