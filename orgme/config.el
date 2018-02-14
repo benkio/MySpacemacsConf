@@ -13,6 +13,8 @@
                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))))
 
-(require 'ox-beamer)
-(require 'ox-md)
-(require 'ox-confluence)
+(with-eval-after-load 'org
+  (require 'ox-beamer)
+  (require 'ox-md)
+  (require 'ox-confluence)
+  )
