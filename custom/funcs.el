@@ -30,10 +30,10 @@
   (transpose-lines 1)
   (forward-line -1))
 
-(global-set-key (kbd "M-l") 'shrink-window-horizontally)
-(global-set-key (kbd "M-r") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-d") 'shrink-window)
-(global-set-key (kbd "M-u") 'enlarge-window)
+(global-set-key (kbd "S-M-l") 'shrink-window-horizontally)
+(global-set-key (kbd "S-M-r") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-M-d") 'shrink-window)
+(global-set-key (kbd "S-M-u") 'enlarge-window)
 
 (defun set-window-width (n)
   "Set the selected window's width."
