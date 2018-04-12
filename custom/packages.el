@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst custom-packages
-  '()
+  '(neotree)
   "The list of Lisp packages required by the custom layer.
 
 Each entry is either:

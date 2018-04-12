@@ -43,3 +43,11 @@
   "Set the selected window to 80 columns."
   (interactive)
   (set-window-width 80))
+
+(defun neotree-resize-window (&rest _args)
+  "Resize neotree window.
+https://github.com/jaypei/emacs-neotree/pull/110"
+  (interactive)
+  (neo-buffer--with-resizable-window
+   (let ((fit-window-to-buffer-horizontally t))
+     (fit-window-to-buffer))))
