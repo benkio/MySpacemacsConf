@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: methodDoc
+# key: mthdoc
+# --
+/**
+* $2
+${3:$(mapconcat (lambda (x) (concat "* @param " x ": \n")) (mapcar (lambda(y) (string-trim (mapconcat 'identity (nreverse (split-string y ":")) " ")) ) (split-string yas/text ", ")) "")}* @return $4:
+*/
+${1:private }def ${2:name}(${3:args}) : ${4:Unit} = {
+    $0
+}
