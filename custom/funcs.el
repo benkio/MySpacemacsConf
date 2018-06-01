@@ -9,15 +9,27 @@
     )
   )
 
-(defun copy-file-name-to-clipboard ()
-  "Copy the current buffer file name to the clipboard."
+(defun copy-file-name-to-clipboard (filename-manipulate-func)
+  "Copy the current buffer file name to the clipboard after the application of the input function."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
                     (buffer-file-name))))
     (when filename
-      (kill-new filename)
-      (message "Copied buffer file name '%s' to the clipboard." filename))))
+      (let ((changedFilename (funcall filename-manipulate-func filename)))
+        (when changedFilename
+          (kill-new changedFilename)
+          (message "Copied buffer file name '%s' to the clipboard." changedFilename))))))
+
+(defun copy-file-name-and-path-to-clipboard ()
+  "Copy the current buffer file name and path to clipboard."
+  (interactive)
+  (copy-file-name-to-clipboard 'identity))
+
+(defun copy-just-file-name-to-clipboard ()
+  "Copy just the current buffer file name to clipboard."
+  (interactive)
+  (copy-file-name-to-clipboard 'file-name-nondirectory))
 
 (defun move-line-up ()
   (interactive)
