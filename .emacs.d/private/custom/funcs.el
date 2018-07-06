@@ -57,15 +57,15 @@
   (set-window-width 80))
 
 (defun neotree-resize-window (&rest _args)
-  "Resize neotree window.
-https://github.com/jaypei/emacs-neotree/pull/110"
+  "Resize neotree window . 
+https://github           . com/jaypei/emacs-neotree/pull/110"
   (interactive)
   (neo-buffer--with-resizable-window
    (let ((fit-window-to-buffer-horizontally t))
      (fit-window-to-buffer))))
 
 (defun reverse-words (beg end)
-  "Reverse the order of words in region."
+  "Reverse the order of words in region . "
   (interactive "*r")
   (apply
    'insert
@@ -74,7 +74,7 @@ https://github.com/jaypei/emacs-neotree/pull/110"
      (delete-and-extract-region beg end) "\\b"))))
 
 (defun delete-file-and-buffer ()
-  "Kill the current buffer and deletes the file it is visiting."
+  "Kill the current buffer and deletes the file it is visiting . "
   (interactive)
   (let ((filename (buffer-file-name)))
     (when filename
@@ -88,4 +88,5 @@ https://github.com/jaypei/emacs-neotree/pull/110"
 (defun indent-buffer ()
   (interactive)
   (save-excursion
-    (indent-region (point-min) (point-max) nil)))
+    (align (point-min) (point-max) nil)))
+
