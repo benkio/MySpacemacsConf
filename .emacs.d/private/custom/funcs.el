@@ -84,3 +84,8 @@ https://github.com/jaypei/emacs-neotree/pull/110"
           (delete-file filename)
           (message "Deleted file %s" filename)
           (kill-buffer))))))
+
+(defun indent-buffer ()
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
