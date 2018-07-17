@@ -316,7 +316,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup trailing
+   dotspacemacs-whitespace-cleanup nil
    ))
 
 (defun dotspacemacs/user-init ()
@@ -351,17 +351,17 @@ you should place your code here."
   ;; automatically save buffers associated with files on buffer switch
   ;; and on windows switch
   (defadvice switch-to-buffer (before save-buffer-now activate)
-    (when buffer-file-name (delete-trailing-whitespace) (indent-buffer) (save-buffer)))
+    (when buffer-file-name (indent-buffer) (save-buffer)))
   (defadvice other-window (before other-window-now activate)
-    (when buffer-file-name (delete-trailing-whitespace) (indent-buffer) (save-buffer)))
+    (when buffer-file-name (indent-buffer) (save-buffer)))
   (defadvice windmove-up (before other-window-now activate)
-    (when buffer-file-name (delete-trailing-whitespace) (indent-buffer) (save-buffer)))
+    (when buffer-file-name (indent-buffer) (save-buffer)))
   (defadvice windmove-down (before other-window-now activate)
-    (when buffer-file-name (delete-trailing-whitespace) (indent-buffer) (save-buffer)))
+    (when buffer-file-name (indent-buffer) (save-buffer)))
   (defadvice windmove-left (before other-window-now activate)
-    (when buffer-file-name (delete-trailing-whitespace) (indent-buffer) (save-buffer)))
+    (when buffer-file-name (indent-buffer) (save-buffer)))
   (defadvice windmove-right (before other-window-now activate)
-    (when buffer-file-name (delete-trailing-whitespace) (indent-buffer) (save-buffer)))
+    (when buffer-file-name (indent-buffer) (save-buffer)))
 
   (add-hook 'neo-change-root-hook #'neotree-resize-window)
   (add-hook 'neo-enter-hook #'neotree-resize-window)
@@ -408,12 +408,26 @@ you should place your code here."
             (lambda ()
               (setq auto-composition-mode nil)))
 
- (add-hook 'dired-mode-hook
-           (lambda ()
-             (dired-hide-details-mode)
-             (dired-sort-toggle-or-edit)))
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (dired-hide-details-mode)
+              (dired-sort-toggle-or-edit)))
 
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yasnippet-snippets yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights visual-fill-column vi-tilde-fringe uuidgen use-package toc-org tagedit string-inflection sql-indent spaceline powerline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters pug-mode popwin persp-mode pcre2el paradox spinner pandoc-mode ox-reveal ox-pandoc orgit org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file omnisharp shut-up noflet neotree move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls macrostep lorem-ipsum livid-mode skewer-mode simple-httpd linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero indent-guide hydra hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile helm-hoogle helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode graphviz-dot-mode google-translate golden-ratio gnuplot-mode gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh marshal logito pcache ht gh-md fuzzy flycheck-pos-tip pos-tip flycheck-haskell flycheck pkg-info epl flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight ensime sbt-mode scala-mode emmet-mode elisp-slime-nav dumb-jump f diminish define-word csv-mode csharp-mode company-web web-completion-data company-tern s dash-functional tern dash company-statistics company-ghci company-ghc ghc haskell-mode company-cabal company column-enforce-mode coffee-mode cmm-mode clean-aindent-mode bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup material-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

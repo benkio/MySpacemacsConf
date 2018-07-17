@@ -57,7 +57,7 @@
   (set-window-width 80))
 
 (defun neotree-resize-window (&rest _args)
-  "Resize neotree window . 
+  "Resize neotree window .
 https://github           . com/jaypei/emacs-neotree/pull/110"
   (interactive)
   (neo-buffer--with-resizable-window
@@ -86,7 +86,8 @@ https://github           . com/jaypei/emacs-neotree/pull/110"
           (kill-buffer))))))
 
 (defun indent-buffer ()
+  "indent whole buffer"
   (interactive)
-  (save-excursion
-    (align (point-min) (point-max) nil)))
-
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil)
+  (untabify (point-min) (point-max)))
