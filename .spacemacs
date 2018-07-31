@@ -46,7 +46,7 @@ values."
      emacs-lisp
      git
      markdown
-     (scala :variables scala-auto-start-ensime t)
+     scala
      html
      java
      csharp
