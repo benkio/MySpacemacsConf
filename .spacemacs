@@ -46,7 +46,7 @@ values."
      emacs-lisp
      git
      markdown
-     scala
+     (scala :variables scala-auto-start-ensime t)
      html
      java
      csharp
@@ -348,6 +348,7 @@ you should place your code here."
   (setq whitespace-style (quote (face spaces tabs newline tab-mark newline-mark)))
   '(fit-window-to-buffer-horizontally t)
   (setq yas-triggers-in-field t)
+  (defalias 'list-buffers 'ibuffer) ; make ibuffer default
   ;; automatically save buffers associated with files on buffer switch
   ;; and on windows switch
   (defadvice switch-to-buffer (before save-buffer-now activate)

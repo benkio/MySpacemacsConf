@@ -2,12 +2,18 @@
 ;; layers.el
 ;; packages.el
 
+
+;; Formatting ;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun xml-format ()
   (interactive)
   (save-excursion
     (shell-command-on-region (mark) (point) "xmllint --format -" (buffer-name) t)
     )
   )
+
+
+;; Copy Filename/Path to Clipboard
 
 (defun copy-file-name-to-clipboard (filename-manipulate-func)
   "Copy the current buffer file name to the clipboard after the application of the input function."
@@ -31,6 +37,9 @@
   (interactive)
   (copy-file-name-to-clipboard 'file-name-nondirectory))
 
+
+;; Move line
+
 (defun move-line-up ()
   (interactive)
   (transpose-lines 1)
@@ -42,10 +51,8 @@
   (transpose-lines 1)
   (forward-line -1))
 
-(global-set-key (kbd "S-M-l") 'shrink-window-horizontally)
-(global-set-key (kbd "S-M-r") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-M-d") 'shrink-window)
-(global-set-key (kbd "S-M-u") 'enlarge-window)
+
+;; Window Manipulation
 
 (defun set-window-width (n)
   "Set the selected window's width."
@@ -56,13 +63,8 @@
   (interactive)
   (set-window-width 80))
 
-(defun neotree-resize-window (&rest _args)
-  "Resize neotree window .
-https://github           . com/jaypei/emacs-neotree/pull/110"
-  (interactive)
-  (neo-buffer--with-resizable-window
-   (let ((fit-window-to-buffer-horizontally t))
-     (fit-window-to-buffer))))
+
+;; Text Manipulation
 
 (defun reverse-words (beg end)
   "Reverse the order of words in region . "
@@ -72,6 +74,9 @@ https://github           . com/jaypei/emacs-neotree/pull/110"
    (reverse
     (split-string
      (delete-and-extract-region beg end) "\\b"))))
+
+
+;; Buffer Manipulation
 
 (defun delete-file-and-buffer ()
   "Kill the current buffer and deletes the file it is visiting . "
@@ -85,9 +90,50 @@ https://github           . com/jaypei/emacs-neotree/pull/110"
           (message "Deleted file %s" filename)
           (kill-buffer))))))
 
+
+;; Align command !!!
+
+;; from http://stackoverflow.com/questions/3633120/emacs-hotkey-to-align-equal-signs
+;; another information: https://gist.github.com/700416
+;; use rx function http://www.emacswiki.org/emacs/rx
+
+(defun align-to-colon (begin end)
+  "Align region to colon (:) signs"
+  (interactive "r")
+  (align-regexp begin end
+                (rx (group (zero-or-more (syntax whitespace))) ":") 1 1 ))
+
+(defun align-to-comma (begin end)
+  "Align region to comma  signs"
+  (interactive "r")
+  (align-regexp begin end
+                (rx "," (group (zero-or-more (syntax whitespace))) ) 1 1 ))
+
+
+(defun align-to-equals (begin end)
+  "Align region to equal signs"
+  (interactive "r")
+  (align-regexp begin end
+                (rx (group (zero-or-more (syntax whitespace))) " =") 1 1 ))
+
+(defun align-to-hash (begin end)
+  "Align region to hash (                                        => ) signs"
+  (interactive "r")
+  (align-regexp begin end
+                (rx (group (zero-or-more (syntax whitespace))) " =>") 1 1 ))
+
+;; work with this
+(defun align-to-comma-before (begin end)
+  "Align region to equal signs"
+  (interactive "r")
+  (align-regexp begin end
+                (rx (group (zero-or-more (syntax whitespace))) ",") 1 1 ))
+
 (defun indent-buffer ()
   "indent whole buffer"
   (interactive)
   (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max) nil)
+  ;;  (align-current)
+  (save-excursion (indent-region (point-min) (point-max) nil))
+  ;;  (align-to-equals (point-min) (point-max))
   (untabify (point-min) (point-max)))
