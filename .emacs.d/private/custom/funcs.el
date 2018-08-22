@@ -137,3 +137,8 @@
   (save-excursion (indent-region (point-min) (point-max) nil))
   ;;  (align-to-equals (point-min) (point-max))
   (untabify (point-min) (point-max)))
+
+ ; Macros ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(fset 'navigate-scala-error
+   [?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-: ?\( ?f ?i ?n ?d ?- ?f ?i ?l ?e ?  ?\" ?\C-y right return ?\C-x ?o right ?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-g ?\M-g ?\C-y return])
