@@ -12,6 +12,14 @@
     )
   )
 
+    ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max))
+        ;; This would override `fill-column' if it's an integer.
+        (emacs-lisp-docstring-fill-column t))
+    (fill-paragraph nil region)))
 
 ;; Copy Filename/Path to Clipboard
 
@@ -138,7 +146,7 @@
   ;;  (align-to-equals (point-min) (point-max))
   (untabify (point-min) (point-max)))
 
- ; Macros ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                                        ; Macros ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (fset 'navigate-scala-error
-   [?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-: ?\( ?f ?i ?n ?d ?- ?f ?i ?l ?e ?  ?\" ?\C-y right return ?\C-u ?- ?\C-x ?o right ?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-g ?g ?\C-y return])
+      [?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-: ?\( ?f ?i ?n ?d ?- ?f ?i ?l ?e ?  ?\" ?\C-y right return ?\C-u ?- ?\C-x ?o right ?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-g ?g ?\C-y return])
