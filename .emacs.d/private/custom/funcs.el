@@ -83,7 +83,12 @@
     (split-string
      (delete-and-extract-region beg end) "\\b"))))
 
+(defun kill-isearch-match ()
+  "Kill the current isearch match string and continue searching."
+  (interactive)
+  (kill-region isearch-other-end (point)))
 
+(define-key isearch-mode-map [(control k)] 'kill-isearch-match)
 ;; Buffer Manipulation
 
 (defun delete-file-and-buffer ()
