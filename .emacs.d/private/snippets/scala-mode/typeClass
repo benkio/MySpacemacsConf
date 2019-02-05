@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: scalaTypeclass
+# key: scalaTypeclass
+# --
+trait $1[$2] {
+  def $3(t : $2) : $4
+}
+
+object $1 {
+
+   def apply[$2](implicit x: $1[A]): $1[A] = x
+
+  object ops {
+    def $3[$2: $1](a: $2) = $1[A].$3(a)
+
+    implicit class $1Ops[$2: $1](a: $2) {
+      def $3 = $1[A].$3(a)
+    }
+  }
+
+  import ops._
+
+  implicit val $5Instance : $1[$6] =
+   x => $0
+}
