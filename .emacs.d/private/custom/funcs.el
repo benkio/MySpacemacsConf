@@ -89,6 +89,19 @@
   (kill-region isearch-other-end (point)))
 
 (define-key isearch-mode-map [(control k)] 'kill-isearch-match)
+
+(defun random-alnum (&optional arg)
+  "Generate a random character"
+  (interactive "p")
+  (insert
+   (mapconcat (lambda (x)
+                (let* ((alnum "abcdefghijklmnopqrstuvwxyz0123456789")
+                       (i (% (abs (random)) (length alnum))))
+                  (substring alnum i (1+ i))))
+               (number-sequence 1 arg 1)
+               "")
+   ))
+
 ;; Buffer Manipulation
 
 (defun delete-file-and-buffer ()
@@ -151,7 +164,7 @@
   ;;  (align-to-equals (point-min) (point-max))
   (untabify (point-min) (point-max)))
 
-                                        ; Macros ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Macros ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (fset 'navigate-scala-error
       [?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-: ?\( ?f ?i ?n ?d ?- ?f ?i ?l ?e ?  ?\" ?\C-y right return ?\C-u ?- ?\C-x ?o right ?\C-  ?\C-s ?: left ?\M-w ?\C-x ?o ?\M-g ?g ?\C-y return])
