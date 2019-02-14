@@ -12,6 +12,19 @@
     )
   )
 
+(defun apply-case-char (startcol endcol function)
+  (move-to-column startcol t)
+  (let ((c (string (following-char))))
+    (delete-char 1)
+    (insert (funcall function c)))
+  )
+
+(defun upcase-first-region (begin end)
+  "Uppercase the first char of each line of the selected region"
+  (interactive "r")
+  (apply-on-rectangle 'apply-case-char begin end 'upcase)
+  )
+
     ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
 (defun unfill-paragraph (&optional region)
   "Takes a multi-line paragraph and makes it into a single line of text."
